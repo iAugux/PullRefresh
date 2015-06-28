@@ -31,7 +31,7 @@ class RefreshBaseView: UIView {
     var scrollViewOriginalInset:UIEdgeInsets!
     
     // 内部的控件
-    var statusLabel:UILabel!
+//    var statusLabel:UILabel!
     var arrowImage:UIImageView!
     var activityView:UIActivityIndicatorView!
     
@@ -62,10 +62,12 @@ class RefreshBaseView: UIView {
         }
         switch newValue {
         case .Normal:
-            self.arrowImage.hidden = false
-            self.activityView.stopAnimating()
+            self.arrowImage.hidden = true
+//            self.activityView.stopAnimating()
             break
         case .Pulling:
+            self.arrowImage.hidden = true
+            activityView.startAnimating()
             break
         case .Refreshing:
             self.arrowImage.hidden = true
@@ -86,14 +88,16 @@ class RefreshBaseView: UIView {
         super.init(frame: frame)
        
         
-        //状态标签
-        statusLabel = UILabel()
-        statusLabel.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        statusLabel.font = UIFont.boldSystemFontOfSize(13)
-        statusLabel.textColor = RefreshLabelTextColor
-        statusLabel.backgroundColor =  UIColor.clearColor()
-        statusLabel.textAlignment = NSTextAlignment.Center
-        self.addSubview(statusLabel)
+//        //状态标签
+//        statusLabel = UILabel()
+//        statusLabel.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+//        statusLabel.font = UIFont.boldSystemFontOfSize(13)
+//        statusLabel.textColor = RefreshLabelTextColor
+//        statusLabel.backgroundColor =  UIColor.clearColor()
+//        statusLabel.textAlignment = NSTextAlignment.Center
+//        self.addSubview(statusLabel)
+        
+        
         //箭头图片
         arrowImage = UIImageView(image: UIImage(named: "arrow.png"))
         arrowImage.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin |  UIViewAutoresizing.FlexibleRightMargin
@@ -120,8 +124,10 @@ class RefreshBaseView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
          //箭头
-        let arrowX:CGFloat = self.frame.size.width * 0.5 - 100
+        let arrowX:CGFloat = self.frame.size.width * 0.5
         self.arrowImage.center = CGPointMake(arrowX, self.frame.size.height * 0.5)
+        
+        self.arrowImage.hidden = true
         //指示器
         self.activityView.center = self.arrowImage.center
     }
@@ -132,19 +138,19 @@ class RefreshBaseView: UIView {
         // 旧的父控件
          
         if (self.superview != nil) {
-            self.superview?.removeObserver(self, forKeyPath: RefreshContentSize, context: nil)
+            self.superview?.removeObserver(self, forKeyPath: RefreshContentSize as String, context: nil)
             
             }
         // 新的父控件
         if (newSuperview != nil) {
-            newSuperview.addObserver(self, forKeyPath: RefreshContentOffset, options: NSKeyValueObservingOptions.New, context: nil)
+            newSuperview.addObserver(self, forKeyPath: RefreshContentOffset as String, options: NSKeyValueObservingOptions.New, context: nil)
             var rect:CGRect = self.frame
             // 设置宽度   位置
             rect.size.width = newSuperview.frame.size.width
             rect.origin.x = 0
             self.frame = frame;
             //UIScrollView
-            scrollView = newSuperview as UIScrollView
+            scrollView = newSuperview as! UIScrollView
             scrollViewOriginalInset = scrollView.contentInset;
         }
     }

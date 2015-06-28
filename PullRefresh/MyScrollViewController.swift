@@ -23,14 +23,6 @@ class MyScrollViewController: UIViewController {
     }
     
     func setupRefresh(){
-        self.scrollView!.addHeaderWithCallback({
-            let delayInSeconds:Int64 = 1000000000 * 2
-            var popTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds)
-            dispatch_after(popTime, dispatch_get_main_queue(), {
-                self.scrollView!.contentSize = self.view.frame.size
-                self.scrollView!.headerEndRefreshing()
-                })
-            })
         
         self.scrollView!.addFooterWithCallback({
             let delayInSeconds:Int64 =  1000000000 * 2

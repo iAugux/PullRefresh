@@ -11,68 +11,7 @@ import UIKit
 
 
 extension UIScrollView {
-    func addHeaderWithCallback( callback:(() -> Void)!){
-        var header:RefreshHeaderView = RefreshHeaderView.footer()
-        self.addSubview(header)
-        header.beginRefreshingCallback = callback
-        header.addState(RefreshState.Normal)
-    }
-    
-    func removeHeader()
-    {
-        
-        for view : AnyObject in self.subviews{
-            if view is RefreshHeaderView{
-                view.removeFromSuperview()
-            }
-        }
-    }
-    
-    
-    func headerBeginRefreshing()
-    {
-        
-        for object : AnyObject in self.subviews{
-            if object is RefreshHeaderView{
-                object.beginRefreshing()
-            }
-        }
-        
-    }
-    
-    
-    func headerEndRefreshing()
-    {
-        for object : AnyObject in self.subviews{
-            if object is RefreshHeaderView{
-                object.endRefreshing()
-            }
-        }
-        
-    }
-    
-    func setHeaderHidden(hidden:Bool)
-    {
-        for object : AnyObject in self.subviews{
-            if object is RefreshHeaderView{
-                var view:UIView  = object as UIView
-                view.hidden = hidden
-            }
-        }
-        
-    }
-    
-    func isHeaderHidden()
-    {
-        for object : AnyObject in self.subviews{
-            if object is RefreshHeaderView{
-                var view:UIView  = object as UIView
-                view.hidden = hidden
-            }
-        }
-        
-    }
-    
+           
    func addFooterWithCallback( callback:(() -> Void)!){
         var footer:RefreshFooterView = RefreshFooterView.footer()
       
@@ -118,7 +57,7 @@ extension UIScrollView {
     {
         for object : AnyObject in self.subviews{
             if object is RefreshFooterView{
-                var view:UIView  = object as UIView
+                var view:UIView  = object as! UIView
                 view.hidden = hidden
             }
         }
@@ -129,7 +68,7 @@ extension UIScrollView {
     {
         for object : AnyObject in self.subviews{
             if object is RefreshFooterView{
-                var view:UIView  = object as UIView
+                var view:UIView  = object as! UIView
                 view.hidden = hidden
             }
         }

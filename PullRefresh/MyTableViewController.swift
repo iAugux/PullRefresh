@@ -14,40 +14,24 @@ class MyTableViewController: UITableViewController {
  
     
     func setupRefresh(){
-          self.tableView.addHeaderWithCallback({
-            self.fakeData!.removeAllObjects()
-            for (var i:Int = 0; i<15; i++) {
-                var text:String = "内容"+String( arc4random_uniform(10000))
-                self.fakeData!.addObject(text)
-            }
-            
-    
-            let delayInSeconds:Int64 =  1000000000  * 2
-            
-            
-            var popTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds)
-            dispatch_after(popTime, dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-                self.tableView.headerEndRefreshing()
-                })
-            
-            })
         
         
         self.tableView.addFooterWithCallback({
             for (var i:Int = 0; i<10; i++) {
-                var text:String = "内容"+String( arc4random_uniform(10000))
+                var text:String = String(i)
 
                 self.fakeData!.addObject(text)
             } 
-            let delayInSeconds:Int64 = 1000000000 * 2
-            var popTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds)
+            let delayInSeconds:Double = 2.5
+            let delta = Int64(delayInSeconds * Double(NSEC_PER_SEC))
+            var popTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW,delta)
             dispatch_after(popTime, dispatch_get_main_queue(), {
-               self.tableView.reloadData()
+                self.tableView.reloadData()
                 self.tableView.footerEndRefreshing()
-                
               //self.tableView.setFooterHidden(true)
                 })
+            
+
          })
     }
     
@@ -55,7 +39,7 @@ class MyTableViewController: UITableViewController {
         super.viewDidLoad()
         fakeData = NSMutableArray()
         for (var i:Int = 0; i<15; i++) {
-            var text:String = "内容"+String( arc4random_uniform(10000))
+            var text:String = String(i)
             self.fakeData!.addObject(text)
         }
         
@@ -71,7 +55,9 @@ class MyTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(arc4random_uniform(100) + 40 )
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
      return self.fakeData!.count
@@ -99,8 +85,8 @@ class MyTableViewController: UITableViewController {
             cell!.contentView.addSubview(statusLabel)
             statusLabel.tag = 1000001
         }
-        var statusLabel:UILabel = cell!.contentView.viewWithTag(1000001) as  UILabel
-        statusLabel.text = fakeData!.objectAtIndex(indexPath.row) as String
+        var statusLabel:UILabel = cell!.contentView.viewWithTag(1000001) as!  UILabel
+        statusLabel.text = fakeData!.objectAtIndex(indexPath.row) as? String
         
          return cell!
     }

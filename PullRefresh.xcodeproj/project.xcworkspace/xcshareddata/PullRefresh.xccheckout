@@ -12,6 +12,8 @@
 	<dict>
 		<key>117F1C275D9FACC8B8A3511F50B3984CD8D203ED</key>
 		<string>https://github.com/zhaokaiyuan99/PullRefresh.git</string>
+		<key>7879985B02D8BE29C90B1E639768CBA648F3AAFE</key>
+		<string>https://github.com/oAugus/iAugus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>PullRefresh.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>117F1C275D9FACC8B8A3511F50B3984CD8D203ED</key>
 		<string>../..</string>
+		<key>7879985B02D8BE29C90B1E639768CBA648F3AAFE</key>
+		<string>../../../iAugus</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/zhaokaiyuan99/PullRefresh.git</string>
@@ -28,6 +32,14 @@
 	<string>117F1C275D9FACC8B8A3511F50B3984CD8D203ED</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7879985B02D8BE29C90B1E639768CBA648F3AAFE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iAugus</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

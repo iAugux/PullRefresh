@@ -10,27 +10,23 @@ import UIKit
 class RefreshFooterView: RefreshBaseView {
     class func footer()->RefreshFooterView{
         var footer:RefreshFooterView  = RefreshFooterView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width,
-        CGFloat(RefreshViewHeight)))
+            CGFloat(RefreshViewHeight)))
         
         return footer
     }
     
     var lastRefreshCount:Int = 0
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.statusLabel.frame = self.bounds;
-    }
     
     override func willMoveToSuperview(newSuperview: UIView!) {
         super.willMoveToSuperview(newSuperview)
         if (self.superview != nil){
-            self.superview!.removeObserver(self, forKeyPath: RefreshContentSize,context:nil)
+            self.superview!.removeObserver(self, forKeyPath: RefreshContentSize as String,context:nil)
         }
         if (newSuperview != nil)  {
             newSuperview.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
             // 重新调整frame
-           adjustFrameWithContentSize()
+            adjustFrameWithContentSize()
         }
     }
     
@@ -42,9 +38,9 @@ class RefreshFooterView: RefreshBaseView {
         rect.origin.y =  contentHeight > scrollHeight ? contentHeight : scrollHeight
         self.frame = rect;
     }
- 
+    
     //监听UIScrollView的属性
-    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if (!self.userInteractionEnabled || self.hidden){
             return
         }
@@ -76,67 +72,64 @@ class RefreshFooterView: RefreshBaseView {
             self.State = RefreshState.Refreshing
         }
     }
-
- 
+    
+    
     override  var State:RefreshState {
- 
-    willSet {
-        if  State == newValue{
-            return;
+        
+        willSet {
+            if  State == newValue{
+                return;
+            }
+            oldState = State
+            setState(newValue)
         }
-        oldState = State
-        setState(newValue)
-    }
-    didSet{
-        switch State{
-        case .Normal:
-            self.statusLabel.text = RefreshFooterPullToRefresh;
-            if (RefreshState.Refreshing == oldState) {
-                self.arrowImage.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-                UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
-                    self.scrollView.contentInset.bottom = self.scrollViewOriginalInset.bottom
+        didSet{
+            switch State{
+            case .Normal:
+                if (RefreshState.Refreshing == oldState) {
+                    self.arrowImage.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+                    UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
+                        self.scrollView.contentInset.bottom = self.scrollViewOriginalInset.bottom
                     })
-            } else {
-                UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
-                    self.arrowImage.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
+                } else {
+                    UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
+                        self.arrowImage.transform = CGAffineTransformMakeRotation(CGFloat(M_PI));
                     })
-            }
-            var deltaH:CGFloat = self.heightForContentBreakView()
-            var currentCount:Int = self.totalDataCountInScrollView()
-            if (RefreshState.Refreshing == oldState && deltaH > 0  && currentCount != self.lastRefreshCount) {
-                var offset:CGPoint = self.scrollView.contentOffset;
-                offset.y = self.scrollView.contentOffset.y
-                self.scrollView.contentOffset = offset;
-            }
-            
-            break
-        case .Pulling:
-            self.statusLabel.text = RefreshFooterReleaseToRefresh
-            UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
-               self.arrowImage.transform = CGAffineTransformIdentity
-                })
-            break
-        case .Refreshing:
-            self.statusLabel.text = RefreshFooterReleaseToRefresh;
-            self.lastRefreshCount = self.totalDataCountInScrollView();
-            UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
-                var bottom:CGFloat = self.frame.size.height + self.scrollViewOriginalInset.bottom
-                 var deltaH:CGFloat = self.heightForContentBreakView()
-                if deltaH < 0 {
-                    bottom = bottom - deltaH
                 }
-                var inset:UIEdgeInsets = self.scrollView.contentInset;
-                inset.bottom = bottom;
-                self.scrollView.contentInset = inset;
-             
+                var deltaH:CGFloat = self.heightForContentBreakView()
+                var currentCount:Int = self.totalDataCountInScrollView()
+                if (RefreshState.Refreshing == oldState && deltaH > 0  && currentCount != self.lastRefreshCount) {
+                    var offset:CGPoint = self.scrollView.contentOffset;
+                    offset.y = self.scrollView.contentOffset.y
+                    self.scrollView.contentOffset = offset;
+                }
+                
+                break
+            case .Pulling:
+                UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
+                    self.arrowImage.transform = CGAffineTransformIdentity
                 })
-            
-            break
-        default:
-            break
-
+                break
+            case .Refreshing:
+                self.lastRefreshCount = self.totalDataCountInScrollView();
+                UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
+                    var bottom:CGFloat = self.frame.size.height + self.scrollViewOriginalInset.bottom
+                    var deltaH:CGFloat = self.heightForContentBreakView()
+                    if deltaH < 0 {
+                        bottom = bottom - deltaH
+                    }
+                    var inset:UIEdgeInsets = self.scrollView.contentInset;
+                    inset.bottom = bottom;
+                    self.scrollView.contentInset = inset;
+                    
+                })
+                
+                break
+            default:
+                break
+                
+            }
         }
-    }
     }
     
     
@@ -144,14 +137,14 @@ class RefreshFooterView: RefreshBaseView {
     {
         var totalCount:Int = 0
         if self.scrollView is UITableView {
-            var tableView:UITableView = self.scrollView as UITableView
-           
+            var tableView:UITableView = self.scrollView as! UITableView
+            
             for (var i:Int = 0 ; i <  tableView.numberOfSections() ; i++){
                 totalCount = totalCount + tableView.numberOfRowsInSection(i)
                 
             }
         } else if self.scrollView is UICollectionView{
-          var collectionView:UICollectionView = self.scrollView as UICollectionView
+            var collectionView:UICollectionView = self.scrollView as! UICollectionView
             for (var i:Int = 0 ; i <  collectionView.numberOfSections() ; i++){
                 totalCount = totalCount + collectionView.numberOfItemsInSection(i)
                 
@@ -178,7 +171,7 @@ class RefreshFooterView: RefreshBaseView {
     }
     
     
-     func addState(state:RefreshState){
+    func addState(state:RefreshState){
         self.State = state
     }
     

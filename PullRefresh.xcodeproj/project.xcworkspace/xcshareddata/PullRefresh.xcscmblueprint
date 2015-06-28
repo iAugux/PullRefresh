@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "117F1C275D9FACC8B8A3511F50B3984CD8D203ED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7879985B02D8BE29C90B1E639768CBA648F3AAFE" : 0,
+    "117F1C275D9FACC8B8A3511F50B3984CD8D203ED" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8AB7A480-A1E8-4FD2-8AEB-9E3F74545A1C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7879985B02D8BE29C90B1E639768CBA648F3AAFE" : "iAugus",
+    "117F1C275D9FACC8B8A3511F50B3984CD8D203ED" : "PullRefresh"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PullRefresh",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PullRefresh.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/zhaokaiyuan99\/PullRefresh.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "117F1C275D9FACC8B8A3511F50B3984CD8D203ED"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/oAugus\/iAugus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7879985B02D8BE29C90B1E639768CBA648F3AAFE"
+    }
+  ]
+}

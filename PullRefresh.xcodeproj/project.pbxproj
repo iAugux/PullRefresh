@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10223041B3FC45600C8D8AC /* RefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10223031B3FC45600C8D8AC /* RefreshFooterView.swift */; };
 		CB5F28F2195A5945005E3D86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F28F1195A5945005E3D86 /* AppDelegate.swift */; };
 		CB5F28FB195A5945005E3D86 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB5F28FA195A5945005E3D86 /* Images.xcassets */; };
 		CB5F2907195A5945005E3D86 /* PullRefreshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2906195A5945005E3D86 /* PullRefreshTests.swift */; };
@@ -15,11 +16,8 @@
 		CB5F291D195A5995005E3D86 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CB5F2913195A5995005E3D86 /* arrow@2x.png */; };
 		CB5F291E195A5995005E3D86 /* RefreshBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2914195A5995005E3D86 /* RefreshBaseView.swift */; };
 		CB5F291F195A5995005E3D86 /* RefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2915195A5995005E3D86 /* RefreshConst.swift */; };
-		CB5F2920195A5995005E3D86 /* RefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2916195A5995005E3D86 /* RefreshFooterView.swift */; };
-		CB5F2921195A5995005E3D86 /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2917195A5995005E3D86 /* RefreshHeaderView.swift */; };
 		CB5F2922195A5995005E3D86 /* UIScrollView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2918195A5995005E3D86 /* UIScrollView+Refresh.swift */; };
 		CB5F2923195A5995005E3D86 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2919195A5995005E3D86 /* RootViewController.swift */; };
-		CB5F2926195A5A50005E3D86 /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F2925195A5A50005E3D86 /* Refresh.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B10223031B3FC45600C8D8AC /* RefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFooterView.swift; sourceTree = "<group>"; };
 		CB5F28EC195A5945005E3D86 /* PullRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB5F28F0195A5945005E3D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB5F28F1195A5945005E3D86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,11 +44,8 @@
 		CB5F2913195A5995005E3D86 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		CB5F2914195A5995005E3D86 /* RefreshBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshBaseView.swift; sourceTree = "<group>"; };
 		CB5F2915195A5995005E3D86 /* RefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshConst.swift; sourceTree = "<group>"; };
-		CB5F2916195A5995005E3D86 /* RefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFooterView.swift; sourceTree = "<group>"; };
-		CB5F2917195A5995005E3D86 /* RefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
 		CB5F2918195A5995005E3D86 /* UIScrollView+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Refresh.swift"; sourceTree = "<group>"; };
 		CB5F2919195A5995005E3D86 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		CB5F2925195A5A50005E3D86 /* Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,11 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				CB5F2913195A5995005E3D86 /* arrow@2x.png */,
-				CB5F2925195A5A50005E3D86 /* Refresh.swift */,
 				CB5F2914195A5995005E3D86 /* RefreshBaseView.swift */,
 				CB5F2915195A5995005E3D86 /* RefreshConst.swift */,
-				CB5F2916195A5995005E3D86 /* RefreshFooterView.swift */,
-				CB5F2917195A5995005E3D86 /* RefreshHeaderView.swift */,
+				B10223031B3FC45600C8D8AC /* RefreshFooterView.swift */,
 				CB5F2918195A5995005E3D86 /* UIScrollView+Refresh.swift */,
 			);
 			path = Refresh;
@@ -185,6 +179,7 @@
 		CB5F28E4195A5945005E3D86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = zhaokaiyuan;
 				TargetAttributes = {
@@ -243,11 +238,9 @@
 				CB5F291F195A5995005E3D86 /* RefreshConst.swift in Sources */,
 				CB5F2922195A5995005E3D86 /* UIScrollView+Refresh.swift in Sources */,
 				CB5F2923195A5995005E3D86 /* RootViewController.swift in Sources */,
+				B10223041B3FC45600C8D8AC /* RefreshFooterView.swift in Sources */,
 				CB5F28F2195A5945005E3D86 /* AppDelegate.swift in Sources */,
-				CB5F2920195A5995005E3D86 /* RefreshFooterView.swift in Sources */,
-				CB5F2921195A5995005E3D86 /* RefreshHeaderView.swift in Sources */,
 				CB5F291C195A5995005E3D86 /* MyTableViewController.swift in Sources */,
-				CB5F2926195A5A50005E3D86 /* Refresh.swift in Sources */,
 				CB5F291B195A5995005E3D86 /* MyScrollViewController.swift in Sources */,
 				CB5F291E195A5995005E3D86 /* RefreshBaseView.swift in Sources */,
 			);
